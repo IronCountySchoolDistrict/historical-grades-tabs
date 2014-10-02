@@ -1,0 +1,20 @@
+[
+    ~[tlist_sql;
+        SELECT DISTINCT Sched_Department
+        FROM StoredGrades sg
+        INNER JOIN Students s ON s.id = sg.studentid
+        INNER JOIN Schools sch ON s.Enrollment_Schoolid = sch.school_number
+        LEFT OUTER JOIN Courses c ON sg.Course_Number = c.Course_Number
+        LEFT OUTER JOIN Terms yr ON substr(to_char(sg.termid),1,2) = yr.yearID AND sg.schoolid = yr.schoolid AND yr.isyearrec = 1
+        WHERE sg.studentID = ~[gpv:curstudid]
+        AND to_char(yr.yearid) LIKE CASE WHEN to_char('~[gpv:yearid]') = '0' THEN '%' ELSE to_char('~[gpv:yearid]') END
+        AND sg.grade_level BETWEEN CASE WHEN s.enrollment_schoolid = 999999 THEN -99 ELSE sch.Hist_Low_Grade END AND CASE WHEN s.enrollment_schoolid = 999999 THEN 99 ELSE sch.Hist_High_Grade END
+        ORDER BY Sched_Department
+    ]
+        {
+            "gpvfields": ["curstudid", "yearid"],
+            "department": "~(dept;t)"
+        },
+
+    [/tlist_sql]{}
+]

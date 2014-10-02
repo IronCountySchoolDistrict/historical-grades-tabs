@@ -1,0 +1,41 @@
+[
+    ~[tlist_sql;
+        SELECT
+          (select distinct abbreviation from terms where isyearrec = 1 and to_char(sg.termid) like to_char(yearID)||'__') yr,
+          CASE ter.isyearrec WHEN 1 THEN 'YR' ELSE ter.Abbreviation END yrter,
+          sg.grade_level gr,
+          replace(sg.course_name,'"','\"') crs,
+          sg.EarnedCrHrs,
+          sg.StoreCode,
+          sg.Percent,
+          nvl(trim(sg.Grade),'_') grade,
+          replace(c.Sched_Department,'"','\"'),
+          '031'||to_char(sg.dcid) frn,
+          sg.CREDIT_TYPE,
+          sg.COURSE_NUMBER
+        FROM StoredGrades sg
+          INNER JOIN Students s ON s.id = sg.studentid
+          INNER JOIN Schools sch ON s.Enrollment_Schoolid = sch.school_number
+          LEFT OUTER JOIN Courses c ON sg.Course_Number = c.Course_Number
+          LEFT OUTER JOIN Terms ter ON sg.TermID = ter.ID AND sg.schoolid = ter.schoolid
+        WHERE sg.studentID = ~[gpv:curstudid]
+          ~[if#yearid.~[gpv:yearid]=][else#yearid]AND sg.termid LIKE '~[gpv:yearid]__'[/if#yearid]
+          AND sg.grade_level BETWEEN CASE WHEN s.enrollment_schoolid = 999999 THEN -99 ELSE sch.Hist_Low_Grade END AND CASE WHEN s.enrollment_schoolid = 999999 THEN 99 ELSE sch.Hist_High_Grade END
+        ORDER BY nvl(yr,'0000'||to_char(sg.TermID)) desc, sg.Course_Name, sg.Course_Number, sg.StoreCode
+    ]
+        {
+            "gpvfields": ["yearid", "studentid"],
+            "yearTerm":"~(yr;t) ~(ter;t)",
+            "gradeLevel":"~(gr;t)",
+            "courseName":"~(crs;t)",
+            "earnedCourseHours":"~(EarnedCrHrs;f)",
+            "storeCode":"~(StoreCode;t)",
+            "percent":"~(Percent;t)",
+            "grade":"~(grade;t)",
+            "department":"~(dept;t)",
+            "frn":"~(frn;t)",
+            "creditType": "~(creditType;t)",
+            "courseNumber": "~(courseNumber)"
+        },
+    [/tlist_sql]{}
+]

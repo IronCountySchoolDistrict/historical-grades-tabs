@@ -1,0 +1,16 @@
+[
+    ~[tlist_sql;
+    SELECT DISTINCT sg.StoreCode
+    FROM StoredGrades sg
+    INNER JOIN Students s ON s.id = sg.studentid
+    INNER JOIN Schools sch ON s.Enrollment_Schoolid = sch.school_number
+    WHERE sg.studentID = ~[gpv:curstudid]
+    AND sg.grade_level BETWEEN CASE WHEN s.enrollment_schoolid = 999999 THEN -99 ELSE sch.Hist_Low_Grade END AND CASE WHEN s.enrollment_schoolid = 999999 THEN 99 ELSE sch.Hist_High_Grade END
+    ORDER BY sg.StoreCode;
+    ]
+        {
+        "gpvfields": ["curstudid"],
+        "storeCode": "~(storecode)"
+        },
+    [/tlist_sql]{}
+]
