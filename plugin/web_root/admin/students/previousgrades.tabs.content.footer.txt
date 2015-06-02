@@ -1,0 +1,125 @@
+<script type="text/template" id="head-scripts-template">
+    <link rel="stylesheet" href="<!-- @echo IMAGE_SERVER_URL -->/scripts/historical-grades-tabs/css/crm-css/jquery-ui.custom.css" type="text/css">
+    <link rel="stylesheet" href="<!-- @echo IMAGE_SERVER_URL -->/scripts/historical-grades-tabs/css/reports-printable.css" type="text/css" media="print">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table_jui.css">
+</script>
+
+<script id="loading-template" type="text/template">
+    <div class="tableToGridLoadingImage" style="height:100%; padding:100px;">
+            <img src="<!-- @echo IMAGE_SERVER_URL -->/images/img/jquery/ui-anim_basic_16x16.gif"/><strong>Loading</strong>
+    </div>
+</script>
+
+<script>
+    var psData = {};
+    psData.yearId = '~[gpv:yearid]';
+    psData.curStudId = '~(curstudid)';
+</script>
+
+<script type="text/template" id="tabs-template">
+    <ul id="tabs" class="tabs">
+        <%
+            _.each(tabs, function(tab) {
+                // If the tab's year is the same the year passed in the gpv, show selected
+                // or, if the tab's year is the first tab in the tabs array, then this is the first visit to this page
+                // and show first tab as active tab.
+                if ( (tab.yearId == '~[gpv:yearid]') || (tabs.indexOf(tab) == 0 && '~[gpv:yearid]' == '')) {
+                    var tab_class = 'selected';
+                    var link_href = '#';
+                } else {
+                    var tab_class = tab.yearId;
+                    var link_href = '/admin/students/previousgrades.html?frn=~[gpv:frn]&yearid=' + tab.yearId;
+                }
+        %>
+        <li class="<%= tab_class %>">
+            <a href="<%= link_href %>"><%= tab.term %></a>
+        </li>
+        <%
+            });
+            if (tabs.length > 1) {
+                // Is the user viewing all years? Show "all" tab as selected.
+                if ('~[gpv:yearid]' == 'all'){
+                    var tab_class = 'selected';
+                    var link_href = '#';
+                } else {
+                    var tab_class = '';
+                    var link_href = '/admin/students/previousgrades.html?frn=~[gpv:frn]&yearid=' + 'all';
+                }
+        %>
+        <li class="<%= tab_class %>">
+            <a href="<%= link_href %>">Show All</a>
+        </li>
+
+        <%
+            }
+        %>
+    </ul>
+</script>
+
+<script type="text/template" id="table-template">
+
+    <table border="0" cellspacing="0" cellpadding="4">
+        <tbody>
+        <tr align="center">
+            <td><a href="previousgrades.entry.html?frn=~(curstudid)">Multiple New Entries</a>&nbsp;</td>
+            <td><a href="newstoredgrade.html?frn=~(curstudid)">Single New Entry</a>&nbsp;</td>
+            <td><a href="histschoolnames.html?frn=~(curstudid)">Previous School Names</a>&nbsp;</td>
+            <td><a href="previousgrades.detail.html?frn=~(curstudid)">Detail View</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table id="grades-table" class="display" border="0">
+        <thead>
+        <tr bgcolor="#f6f6f6">
+            <th>~[text:psx.html.admin_students.previousgrades.yearterm]</th>
+            <th>~[text:psx.html.admin_students.previousgrades.grd_lvl]</th>
+            <th>~[text:psx.html.admin_students.previousgrades.course]</th>
+            <th>~[text:psx.html.admin_students.previousgrades.earned_credit]</th>
+            <th>~[text:psx.html.admin_students.previousgrades_entry.credit_type]</th>
+            <th>~[text:psx.html.admin_students.previousgrades.course_number]</th>
+            <%
+                _.each(storeCodes, function(storeCode) {
+            %>
+                <th class="storeCodes" id="<%= storeCode.storeCode %>"><%= storeCode.storeCode %></th>
+            <%
+                });
+            %>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            _.each(rows, function(row, index) {
+        %>
+        <tr>
+            <td><%= row.yearTerm %></td>
+            <td><%= row.gradeLevel %></td>
+            <td><%= row.courseName %></td>
+            <td><%= row.earnedCourseHours %></td>
+            <td><%= row.creditType %></td>
+            <td><%= row.courseNumber %></td>
+        <%
+                _.each(storeCodes, function(code) {
+                    if (_.contains(Object.keys(row), code.storeCode)) {
+                        var grade = row[code.storeCode].grade;
+                        var frn = row[code.storeCode].frn;
+        %>
+                        <td><a href="esg.html?frn=<%= frn %>"><%= grade %></a></td>
+        <%
+                    } else {
+        %>
+                        <td>.</td>
+        <%
+                    }
+                });
+            });
+        %>
+        </tr>
+        </tbody>
+    </table>
+
+
+</script>
+
+<script src="<!-- @echo IMAGE_SERVER_URL -->/scripts/historical-grades-tabs/js/previousgrades.js"></script>

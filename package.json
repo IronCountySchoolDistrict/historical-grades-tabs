@@ -1,0 +1,19 @@
+{
+  "name": "historical-grades-tabs",
+  "version": "2.1.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IronCountySchoolDistrict/historical-grades-tabs.git"
+  },
+  "author": "IronCountySchoolDistrict",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/IronCountySchoolDistrict/historical-grades-tabs/issues"
+  },
+  "homepage": "https://github.com/IronCountySchoolDistrict/historical-grades-tabs#readme"
+}
