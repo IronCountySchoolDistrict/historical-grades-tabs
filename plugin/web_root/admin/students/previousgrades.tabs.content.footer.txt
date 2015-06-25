@@ -1,9 +1,13 @@
-<script type="text/template" id="head-scripts-template">
-    <link rel="stylesheet" href="<!-- @echo IMAGE_SERVER_URL -->/scripts/historical-grades-tabs/css/crm-css/jquery-ui.custom.css" type="text/css">
-    <link rel="stylesheet" href="<!-- @echo IMAGE_SERVER_URL -->/scripts/historical-grades-tabs/css/reports-printable.css" type="text/css" media="print">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table_jui.css">
+<script type="text/javascript">
+	require.config({
+		paths: {
+			"datatables": "https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.7/js/jquery.dataTables"
+		}
+	});
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css">
 
 <script id="loading-template" type="text/template">
     <div class="tableToGridLoadingImage" style="height:100%; padding:100px;">
@@ -118,8 +122,6 @@
         </tr>
         </tbody>
     </table>
-
-
 </script>
 
 <script src="<!-- @echo IMAGE_SERVER_URL -->/scripts/historical-grades-tabs/js/previousgrades.js"></script>
