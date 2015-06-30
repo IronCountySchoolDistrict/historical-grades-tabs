@@ -1,12 +1,23 @@
 <script type="text/javascript">
-	require.config({
-		paths: {
-			"datatables": "https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.7/js/jquery.dataTables"
-		}
-	});
+    require.config({
+        paths: {
+            "datatables": "//cdn.datatables.net/1.10.7/js/jquery.dataTables",
+            "datatables.jqueryui": "//cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui"
+        },
+        shim: {
+            "datatables": {
+                deps: ["jquery"],
+                exports: "jQuery.fn.dataTable"
+            },
+            "datatables.jqueryui": {
+                deps: ["datatables"]
+            }
+        }
+    });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
 
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css">
 
 <script id="loading-template" type="text/template">
