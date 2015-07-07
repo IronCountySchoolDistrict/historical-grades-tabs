@@ -1,5 +1,5 @@
 /*global $,require,psData,_,parseFloat*/
-require(["jquery", "underscore"], function($, _) {
+require(["jquery", "underscore", "datatables"], function($, _) {
     'use strict';
     $('.box-round').html($('#loading-template').html()); //Show loading image.
 
@@ -108,13 +108,11 @@ require(["jquery", "underscore"], function($, _) {
                         "sSortDataType": "dom-text"
                     });
                 });
-                require(["datatables"], function() {
-                    $('#grades-table').dataTable({
-                        "bPaginate": false,
-                        "bFilter": true,
-                        "bJQueryUI": true
-                    });
-                })
+                $('#grades-table').dataTable({
+                    "bPaginate": false,
+                    "bFilter": true,
+                    "bJQueryUI": true
+                });
             });
         });
     });
