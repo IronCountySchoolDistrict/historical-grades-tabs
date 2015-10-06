@@ -22,7 +22,7 @@
 
 <script id="loading-template" type="text/template">
     <div class="tableToGridLoadingImage" style="height:100%; padding:100px;">
-            <img src="<!-- @echo IMAGE_SERVER_URL -->/images/img/jquery/ui-anim_basic_16x16.gif"/><strong>Loading</strong>
+            <img src="/images/img/jquery/ui-anim_basic_16x16.gif"/><strong>Loading</strong>
     </div>
 </script>
 
@@ -135,4 +135,4 @@
     </table>
 </script>
 
-<script src="<!-- @echo IMAGE_SERVER_URL -->/scripts/historical-grades-tabs/js/previousgrades.js"></script>
+<script src="/scripts/historical-grades-tabs/js/previousgrades.js"></script>

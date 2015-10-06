@@ -5,7 +5,7 @@
  * Language:    Javascript
  * License:     LGPL / 3 point BSD
  * Project:     DataTables
- * 
+ *
  * Copyright 2010 Allan Jardine, all rights reserved.
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -50,7 +50,7 @@ button.DTTT_button {
 	*cursor: hand;
 }
 
-button.DTTT_button::-moz-focus-inner { 
+button.DTTT_button::-moz-focus-inner {
 	border: none !important;
 	padding: 0;
 }
@@ -63,61 +63,61 @@ button.DTTT_button::-moz-focus-inner {
 
 button.DTTT_button_csv {
 	padding-right: 30px;
-	background: url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/csv.png) no-repeat center right;
+	background: url(/images/historical-grades-tabs/tabletools/csv.png) no-repeat center right;
 }
 
 button.DTTT_button_csv_hover {
 	padding-right: 30px;
 	border: 1px solid #999;
-	background: #f0f0f0 url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/csv_hover.png) no-repeat center right;
+	background: #f0f0f0 url(/images/historical-grades-tabs/tabletools/csv_hover.png) no-repeat center right;
 }
 
 
 button.DTTT_button_xls {
 	padding-right: 30px;
-	background: url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/xls.png) no-repeat center right;
+	background: url(/images/historical-grades-tabs/tabletools/xls.png) no-repeat center right;
 }
 
 button.DTTT_button_xls_hover {
 	padding-right: 30px;
 	border: 1px solid #999;
-	background: #f0f0f0 url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/xls_hover.png) no-repeat center right;
+	background: #f0f0f0 url(/images/historical-grades-tabs/tabletools/xls_hover.png) no-repeat center right;
 }
 
 
 button.DTTT_button_copy {
 	padding-right: 30px;
-	background: url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/copy.png) no-repeat center right;
+	background: url(/images/historical-grades-tabs/tabletools/copy.png) no-repeat center right;
 }
 
 button.DTTT_button_copy_hover {
 	padding-right: 30px;
 	border: 1px solid #999;
-	background: #f0f0f0 url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/copy_hover.png) no-repeat center right;
+	background: #f0f0f0 url(/images/historical-grades-tabs/tabletools/copy_hover.png) no-repeat center right;
 }
 
 
 button.DTTT_button_pdf {
 	padding-right: 30px;
-	background: url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/pdf.png) no-repeat center right;
+	background: url(/images/historical-grades-tabs/tabletools/pdf.png) no-repeat center right;
 }
 
 button.DTTT_button_pdf_hover {
 	padding-right: 30px;
 	border: 1px solid #999;
-	background: #f0f0f0 url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/pdf_hover.png) no-repeat center right;
+	background: #f0f0f0 url(/images/historical-grades-tabs/tabletools/pdf_hover.png) no-repeat center right;
 }
 
 
 button.DTTT_button_print {
 	padding-right: 30px;
-	background: url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/print.png) no-repeat center right;
+	background: url(/images/historical-grades-tabs/tabletools/print.png) no-repeat center right;
 }
 
 button.DTTT_button_print_hover {
 	padding-right: 30px;
 	border: 1px solid #999;
-	background: #f0f0f0 url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/print_hover.png) no-repeat center right;
+	background: #f0f0f0 url(/images/historical-grades-tabs/tabletools/print_hover.png) no-repeat center right;
 }
 
 
@@ -132,13 +132,13 @@ button.DTTT_button_text_hover {
 
 button.DTTT_button_collection {
 	padding-right: 17px;
-	background: url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/collection.png) no-repeat center right;
+	background: url(/images/historical-grades-tabs/tabletools/collection.png) no-repeat center right;
 }
 
 button.DTTT_button_collection_hover {
 	padding-right: 17px;
 	border: 1px solid #999;
-	background: #f0f0f0 url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/collection_hover.png) no-repeat center right;
+	background: #f0f0f0 url(/images/historical-grades-tabs/tabletools/collection_hover.png) no-repeat center right;
 }
 
 
@@ -200,7 +200,7 @@ div.DTTT_collection {
 }
 
 div.DTTT_collection_background {
-	background: transparent url(<!-- @echo IMAGE_SERVER_URL -->/images/historical-grades-tabs/tabletools/background.png) repeat top left;
+	background: transparent url(/images/historical-grades-tabs/tabletools/background.png) repeat top left;
 	z-index: 2001;
 }
 
@@ -229,13 +229,13 @@ div.DTTT_collection button.DTTT_button {
 	background-color: #3f3f3f;
 	color: white;
 	padding: 10px 30px;
-	
+
 	opacity: 0.9;
-	
+
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	
+
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
