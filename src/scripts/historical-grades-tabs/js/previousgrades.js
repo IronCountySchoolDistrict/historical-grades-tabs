@@ -47,11 +47,8 @@ require(["jquery", "underscore", "datatables"], function($, _) {
             mostRecentGradeYear = jsonData[0].yearId;
         }
         var template = $('#tabs-template').html();
-        var renderedTemplate = _.template(template, {
-            tabs: jsonData
-        });
-        $(renderedTemplate).insertBefore('.box-round');
-
+        var renderedTemplate = _.template(template);
+        $(renderedTemplate({tabs: jsonData})).insertBefore('.box-round');
         var storeCodeUri;
 
         // If year gpv is set to all, show all grades for every year that the student is enrolled.
@@ -87,8 +84,8 @@ require(["jquery", "underscore", "datatables"], function($, _) {
                     rows: normalizedGrades,
                     storeCodes: jsonCodeData
                 };
-                var renderedTemplate = _.template(template, context);
-                $('.box-round').html(renderedTemplate); //insert new table
+                var renderedTemplate = _.template(template);
+                $('.box-round').html(renderedTemplate(context)); //insert new table
 
                 /*
                 $.fn.dataTableExt.afnSortData['dom-text'] = function ( oSettings, iColumn ) {
