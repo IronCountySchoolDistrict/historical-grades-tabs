@@ -2,7 +2,8 @@
     require.config({
         paths: {
             "datatables": "//cdn.datatables.net/1.10.7/js/jquery.dataTables",
-            "datatables.jqueryui": "//cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui"
+            "datatables.jqueryui": "//cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui",
+            "historical": "/scripts/historical-grades-tabs/js/previousgrades"
         },
         shim: {
             "datatables": {
@@ -135,4 +136,8 @@
     </table>
 </script>
 
-<script src="/scripts/historical-grades-tabs/js/previousgrades.js"></script>
+<script>
+    require(['historical','datatables'], function(historical){
+        historical.default();
+    });
+</script>

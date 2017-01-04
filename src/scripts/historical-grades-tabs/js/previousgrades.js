@@ -1,6 +1,8 @@
-/*global $,require,psData,_,parseFloat*/
-require(["jquery", "underscore", "datatables"], function($, _) {
-    'use strict';
+import $ from "jquery";
+import _ from "underscore";
+import datatables from "datatables";
+
+export default function() {
     $('.box-round').html($('#loading-template').html()); //Show loading image.
 
     // Create grades objects that store all grades data for that course in the same object.
@@ -113,4 +115,4 @@ require(["jquery", "underscore", "datatables"], function($, _) {
             });
         });
     });
-});
+}
